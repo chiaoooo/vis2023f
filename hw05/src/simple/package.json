@@ -1,0 +1,14 @@
+{
+  "name": "ffc516e947a594e9",
+  "main": "ffc516e947a594e9@27.js",
+  "version": "27.0.0",
+  "homepage": "https://observablehq.com/d/ffc516e947a594e9",
+  "author": {
+    "name": "北科大-王俞喬's Workspace",
+    "url": "https://observablehq.com/@bei-ke-da-wang-yu-qiao-ws"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
