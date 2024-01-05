@@ -53,7 +53,42 @@ function createHistogramOrder() {
 }
 )}
 
-function _8(Plot,constellationChinese,data,histogramTipsOrder){return(
+function _8(Plot,constellationChinese,barChartData){return(
+Plot.plot({
+  x: {
+    grid: true,
+    domain: constellationChinese
+  },
+  y: { grid: true },
+  marks: [
+    Plot.ruleY([0]),
+    Plot.barY(barChartData, {
+      x: "constellation",
+      y: "count",
+      fill : "gender",
+      channels: {
+        constellation: {
+          value: "constellation",
+          label: "Constellation"
+        },
+        gender: {
+          value: "gender",
+          label: "gender"
+        }
+      },
+      tip: {
+        format: {
+          y: d => d,
+          x: false,
+          fill: false,
+        }
+      }
+    })
+  ]
+})
+)}
+
+function _9(Plot,constellationChinese,data,histogramTipsOrder){return(
 Plot.plot({
   x: { 
     grid: true,
@@ -110,6 +145,7 @@ export default function define(runtime, observer) {
   main.variable(observer("histogramTipsOrder")).define("histogramTipsOrder", ["createHistogramOrder"], _histogramTipsOrder);
   main.variable(observer("createBarData")).define("createBarData", ["constellationChinese","data"], _createBarData);
   main.variable(observer("createHistogramOrder")).define("createHistogramOrder", ["barChartData","constellationChinese"], _createHistogramOrder);
-  main.variable(observer()).define(["Plot","constellationChinese","data","histogramTipsOrder"], _8);
+  main.variable(observer()).define(["Plot","constellationChinese","barChartData"], _8);
+  main.variable(observer()).define(["Plot","constellationChinese","data","histogramTipsOrder"], _9);
   return main;
 }
